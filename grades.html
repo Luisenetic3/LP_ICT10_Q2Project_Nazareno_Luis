@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFFFFF;
+            color: #003366;
+            margin: 0;
+            padding: 0;
+        }
+
+        .topbar-custom {
+            background-color: #003366;
+        }
+
+            .navbar-brand,
+            .navbar .nav-link {
+            color: #E6F0FF !important;
+        }
+
+        .calculator-card {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 28px;
+            background-color: #E6F0FF;
+            border: 3px solid #003366;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0,68,170,0.06);
+        }
+
+        .calculator-card h1 {
+            color: #3366CC;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .btn-submit {
+        background-color: #0044AA;
+        color: #FFFFFF;
+        border: none;
+        padding: 12px 18px;
+        font-size: 16px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(0,68,170,0.08);
+        }
+
+        .btn-submit:hover, .btn-submit:focus {
+            background-color: #3366CC;
+            box-shadow: 0 10px 20px rgba(0,68,170,0.12);
+        }
+
+        .output-box {
+        background-color: #66AAFF;
+        color: #003366;
+        padding: 22px;
+        border-radius: 10px;
+        border: 2px solid #0044AA;
+        min-height: 120px;
+        text-align: left;
+        font-weight: 500;
+        width: 85%;
+        margin: 22px auto 0 auto;
+        }
+
+        .site-footer {
+            background-color: #5097dd;
+            color: #E6F0FF;
+            text-align: center;
+            padding: 12px 0;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            font-size: 14px;
+            font-weight: 500;
+            border-top: 3px solid #86b6ff;
+        }
+</style>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg topbar-custom navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">H Corp Institute of Innovation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="grades.html">Grade Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="clubs.html">Clubs</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mx-auto p-2 m-5" style="width: 600px; border: 3px solid #0044AA;; border-style: solid; border-radius: 10px; background-color: #E6F0FF;;">
+        <div style="text-align: center;">
+            <h1 style="color: rgb(112, 197, 227);">Student Grade Calculator</h1>
+            <br>
+            <div class="col d-flex">
+                <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px;">First Name</label>
+                <input type="text" id="Fname" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="Luis">
+            </div>
+            <br>    
+            <div class="col d-flex">
+                <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px;">Last Name</label>
+                <input type="text" id="Lname" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="Nazareno">
+            </div>
+
+            <br>
+            <br>
+            
+            <div>
+                <h2>Enter your Grades:</h2>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 d-flex align-items-center mb-3">
+                            <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px; padding: 5px; width: 100px; text-align: center;">Science</label>
+                            <input type="text" id="science" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="84">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center mb-3">
+                            <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px; padding: 5px; width: 100px; text-align: center;">Math</label>
+                            <input type="text" id="Math" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="84">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 d-flex align-items-center mb-3">
+                            <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px; padding: 5px; width: 100px; text-align: center;">English</label>
+                            <input type="text" id="English" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="84">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center mb-3">
+                            <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px; padding: 5px; width: 100px; text-align: center;">Filipino</label>
+                            <input type="text" id="Filipino" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="84">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 d-flex align-items-center mb-3">
+                            <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px; padding: 5px; width: 100px; text-align: center;">ICT</label>
+                            <input type="text" id="ICT" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="84">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center mb-3">
+                            <label for="" style="background-color: #66AAFF; color: rgb(0, 0, 0); border-radius: 10px 0px 0px 10px; padding: 5px; width: 100px; text-align: center;">PE</label>
+                            <input type="text" id="PE" class="form-control" style="border-radius: 0px 10px 10px 0px; border: 2px solid lightblue;" placeholder="84">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="flex-grow-1 text-center">
+                <button type="submit" class="btn" py-click="Calculate" style="background-color: #3366CC; color: rgb(255, 255, 255);">
+                    Submit Order
+                </button>
+            </div>
+
+
+            <div class="container" style="text-align: left; border: 2px solid #0044AA; border-radius: 10px; padding: 10px; margin-top: 20px; background-color: #66AAFF;">
+                <h4 id="name">Your Name will appear here.</h4>
+                <p id="grades">Your Subject Grades will Appear here.</p>
+                <h4 id="average">Your total average will appear here.</h4>
+            </div>
+
+            <script type="py" src="grades.py"></script>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>© 2025 H Corp Institute of Innovation · All Rights Reserved</p>
+    </footer>
+</body>
+</html>
